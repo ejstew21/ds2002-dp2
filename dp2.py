@@ -21,18 +21,19 @@ for file in os.listdir(directory):
             files_imported +=1
         except Exception as e:
             failed_load +=1
-            print(e, "error when loading", f)
+            # print(e, "error when loading", f)
         if isinstance(file_data,list):
             try:
                 collection.insert_many(file_data)
                 files_imported += len(file_data)
             except Exception as e:
                 failed_load+=1
-                print(e, "when importing into Mongo")
+                # print(e, "when importing into Mongo")
         else:
             try:
                 collection.insert_one(file_data)
             except Exception as e:
-                print(e)
+                # print(e)
                 failed_load +=1
 print(files_imported, failed_load)
+
